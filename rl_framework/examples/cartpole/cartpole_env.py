@@ -80,12 +80,14 @@ class CartPoleEnvWrapper(BaseEnvironment):
         """
         self.env.close()
 
+    @property
     def observation_spec(self) -> UnboundedContinuousTensorSpec:
         """
         Returns the specification of the observation space.
         """
         return self._observation_spec
 
+    @property
     def action_spec(self) -> DiscreteTensorSpec:
         """
         Returns the specification of the action space.

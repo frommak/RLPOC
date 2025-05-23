@@ -18,22 +18,24 @@ def test_custom_env_ppo_single_epoch_run(): # Changed from single_step to single
     
     # 2. Create a temporary CustomComplexEnv instance to get specs
     temp_env = env_factory()
-    obs_spec = temp_env.observation_spec()
-    action_spec = temp_env.action_spec()
+        obs_spec = temp_env.observation_spec # Access as property
+        action_spec = temp_env.action_spec   # Access as property
     temp_env.close()
     
     # 3. Instantiate CustomPolicyNetwork and CustomValueNetwork
     # Use smaller networks for faster testing
-    policy_network = CustomPolicyNetwork(
+        policy_network = CustomPolicyNetwork(
         observation_spec=obs_spec, 
         action_spec=action_spec,
-        hidden_sizes_cnn=[8], # Single small CNN layer
-        hidden_sizes_mlp=[16]  # Single small MLP layer
+            hidden_sizes_cnn=[8], 
+            hidden_sizes_mlp=[16],
+            device=device 
     )
-    value_network = CustomValueNetwork(
+        value_network = CustomValueNetwork(
         observation_spec=obs_spec,
         hidden_sizes_cnn=[8],
-        hidden_sizes_mlp=[16]
+            hidden_sizes_mlp=[16],
+            device=device 
     )
     
     # 4. Instantiate PPOAgent with minimal parameters for a quick test

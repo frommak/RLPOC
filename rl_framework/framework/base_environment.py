@@ -1,10 +1,13 @@
 import abc
 from typing import Any
+import torch # Added import for torch.Size
 
 class BaseEnvironment(abc.ABC):
     """
     Abstract base class for a reinforcement learning environment.
     """
+    _has_dynamic_specs = False # Default for most custom envs
+    batch_size = torch.Size()   # For single envs, batch_size is empty
 
     @abc.abstractmethod
     def reset(self, seed: int = None) -> Any:

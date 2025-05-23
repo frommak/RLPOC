@@ -2,7 +2,7 @@ import argparse
 import torch
 import time # For potential sleep during rendering
 from rl_framework.framework.ppo_agent import PPOAgent
-from torchrl.data import TensorDict # For custom_env observations/actions
+from tensordict import TensorDict # For custom_env observations/actions
 from torchrl.data.specs.tensor_specs import UnboundedContinuousTensorSpec, DiscreteTensorSpec, CompositeSpec # For dummy specs
 
 def parse_args():

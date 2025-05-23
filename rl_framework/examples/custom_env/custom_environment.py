@@ -4,8 +4,9 @@ from torchrl.data import (
     CompositeSpec,
     UnboundedContinuousTensorSpec,
     DiscreteTensorSpec,
-    TensorDict, # For creating observation and action tensordicts
+    # TensorDict will be imported from tensordict
 )
+from tensordict import TensorDict # Canonical import for TensorDict
 from typing import Any, cast
 
 class CustomComplexEnv(BaseEnvironment):

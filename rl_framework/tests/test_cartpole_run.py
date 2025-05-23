@@ -17,13 +17,13 @@ def test_cartpole_ppo_single_epoch_run():
     
     # 2. Create a temporary CartPoleEnvWrapper instance to get specs
     temp_env = env_factory()
-    obs_spec = temp_env.observation_spec()
-    action_spec = temp_env.action_spec()
+    obs_spec = temp_env.observation_spec # Access as property
+    action_spec = temp_env.action_spec   # Access as property
     temp_env.close()
     
     # 3. Instantiate CartPolePolicy and CartPoleValue
-    policy_network = CartPolePolicy(observation_spec=obs_spec, action_spec=action_spec)
-    value_network = CartPoleValue(observation_spec=obs_spec)
+    policy_network = CartPolePolicy(observation_spec=obs_spec, action_spec=action_spec, device=device)
+    value_network = CartPoleValue(observation_spec=obs_spec, device=device)
     
     # 4. Instantiate PPOAgent with minimal parameters for a quick test
     agent = PPOAgent(

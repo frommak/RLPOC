@@ -2,7 +2,8 @@ import torch
 import torch.optim as optim
 from torch.nn.utils import clip_grad_norm_
 from torchrl.collectors import SyncDataCollector
-from torchrl.data import ReplayBuffer, LazyTensorStorage, TensorDict # Adjusted import for TensorDict
+from torchrl.data import ReplayBuffer, LazyTensorStorage # TensorDict will be imported from tensordict
+from tensordict import TensorDict # Canonical import for TensorDict
 from torchrl.envs.utils import ExplorationType, set_exploration_type
 import lightning as L
 
@@ -253,5 +254,3 @@ class PPOAgent(L.LightningModule):
     @property
     def automatic_optimization(self) -> bool:
         return False
-
-```
